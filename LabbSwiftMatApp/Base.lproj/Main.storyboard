@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3L6-im-6f9">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,11 +20,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFr-xx-cKZ">
-                                <rect key="frame" x="16" y="72" width="343" height="81"/>
+                                <rect key="frame" x="20" y="72" width="374" height="81"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Bra mat?">
                                         <attributes>
@@ -37,13 +37,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mtb-MV-u4X">
-                                <rect key="frame" x="16" y="161" width="343" height="30"/>
+                                <rect key="frame" x="20" y="161" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQF-Xb-cqE">
-                                <rect key="frame" x="329" y="199" width="30" height="30"/>
+                                <rect key="frame" x="364" y="199" width="30" height="30"/>
                                 <state key="normal" title="Sök">
                                     <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -81,24 +81,46 @@
             </objects>
             <point key="canvasLocation" x="1085.5999999999999" y="214.54272863568218"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Result Table View Controller-->
         <scene sceneID="lhJ-Lr-ROb">
             <objects>
-                <tableViewController id="tT6-us-rER" sceneMemberID="viewController">
+                <tableViewController id="tT6-us-rER" customClass="ResultTableViewController" customModule="LabbSwiftMatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="HIb-Gw-XwH">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="4cI-lh-rBg">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="4cI-lh-rBg" customClass="ResultTableViewCell" customModule="LabbSwiftMatApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cI-lh-rBg" id="4bm-qI-wna">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matvara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-1f-DUt">
+                                            <rect key="frame" x="8" y="8" width="62" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 kcal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-kk-5gY">
+                                            <rect key="frame" x="332" y="8" width="74" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="leading" secondItem="4bm-qI-wna" secondAttribute="leadingMargin" id="1ZL-cV-s3h"/>
+                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="top" secondItem="4bm-qI-wna" secondAttribute="topMargin" id="Set-4U-wKJ"/>
+                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="top" secondItem="4bm-qI-wna" secondAttribute="topMargin" id="ehr-pf-E8v"/>
+                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="trailing" secondItem="4bm-qI-wna" secondAttribute="trailingMargin" id="uRP-HR-VMH"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fXp-jS-SSY" kind="show" id="R4C-KH-fWr"/>
+                                    <outlet property="searchItemEnergyValue" destination="Yeg-kk-5gY" id="x4h-G5-N7q"/>
+                                    <outlet property="searchItemTitle" destination="wkc-1f-DUt" id="VcD-rp-bD6"/>
+                                    <segue destination="fXp-jS-SSY" kind="show" id="bp1-l8-oyn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -110,25 +132,25 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTJ-mm-lPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1858" y="215"/>
+            <point key="canvasLocation" x="1856.8" y="214.54272863568218"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="ZaA-gc-x6s">
             <objects>
-                <viewController id="fXp-jS-SSY" sceneMemberID="viewController">
+                <viewController id="fXp-jS-SSY" customClass="DetailViewController" customModule="LabbSwiftMatApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MSw-KY-oUu"/>
                         <viewControllerLayoutGuide type="bottom" id="Nw5-DL-H8Y"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ww4-3b-nNo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daB-SS-cGW">
-                                <rect key="frame" x="16" y="126" width="343" height="210"/>
+                                <rect key="frame" x="20" y="126" width="374" height="238"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkk-vw-jvf">
-                                <rect key="frame" x="16" y="72" width="343" height="46"/>
+                                <rect key="frame" x="20" y="72" width="374" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="lae-GR-Pos"/>
                                 </constraints>
@@ -144,7 +166,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gfj-IK-5Zp">
-                                <rect key="frame" x="16" y="344" width="343" height="315"/>
+                                <rect key="frame" x="20" y="372" width="374" height="356"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -167,6 +189,9 @@
                             <constraint firstItem="Nw5-DL-H8Y" firstAttribute="top" secondItem="gfj-IK-5Zp" secondAttribute="bottom" constant="8" symbolic="YES" id="svV-Z9-TM6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailTitleLabel" destination="zkk-vw-jvf" id="Y0y-Xr-BUq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZc-GK-sNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

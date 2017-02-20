@@ -12,6 +12,8 @@
 		8BDA5BF81E534F88003A75BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF61E534F88003A75BA /* Main.storyboard */; };
 		8BDA5BFA1E534F89003A75BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF91E534F89003A75BA /* Assets.xcassets */; };
 		8BDA5BFD1E534F89003A75BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA5BFB1E534F89003A75BA /* LaunchScreen.storyboard */; };
+		8BDA5C231E5605DD003A75BA /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */; };
+		8BDA5C251E573185003A75BA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5C241E573185003A75BA /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		8BDA5BF91E534F89003A75BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BDA5BFC1E534F89003A75BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BDA5BFE1E534F89003A75BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
+		8BDA5C241E573185003A75BA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				8BDA5BF91E534F89003A75BA /* Assets.xcassets */,
 				8BDA5BFB1E534F89003A75BA /* LaunchScreen.storyboard */,
 				8BDA5BFE1E534F89003A75BA /* Info.plist */,
+				8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */,
+				8BDA5C241E573185003A75BA /* DetailViewController.swift */,
 			);
 			path = LabbSwiftMatApp;
 			sourceTree = "<group>";
@@ -138,6 +144,8 @@
 			files = (
 				8BDA5BF51E534F88003A75BA /* ViewController.swift in Sources */,
 				8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */,
+				8BDA5C231E5605DD003A75BA /* ResultTableViewController.swift in Sources */,
+				8BDA5C251E573185003A75BA /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +305,7 @@
 				8BDA5C031E534F89003A75BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
