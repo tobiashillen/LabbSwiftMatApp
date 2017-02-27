@@ -11,15 +11,30 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailTitleLabel: UILabel!
-    var detailTitle : String = ""
+    @IBOutlet weak var energyLabel: UILabel!
+    @IBOutlet weak var fatLabel: UILabel!
+    @IBOutlet weak var proteinLabel: UILabel!
+    @IBOutlet weak var carbohydratesLabel: UILabel!
     
+    var food : Food?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        detailTitleLabel.text = detailTitle
         
         
-        // Do any additional setup after loading the view.
+        if let name = food?.name,
+            let energy = food?.energyValue,
+            let fat = food?.fat,
+            let protein = food?.protein,
+            let carbohydrates = food?.carbohydrates {
+            detailTitleLabel.text = name
+            energyLabel.text = "Energivärde: \(energy) kcal"
+            fatLabel.text = "Fett: \(fat)"
+            proteinLabel.text = "Protein: \(protein)"
+            carbohydratesLabel.text = "Kolhydrater: \(carbohydrates)"
+        } else {
+            NSLog("DetailView: Failed to load data from Food-object")
+        }
     }
 
     override func didReceiveMemoryWarning() {

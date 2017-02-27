@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B7971B41E5B3D1000DD3713 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */; };
 		8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF21E534F88003A75BA /* AppDelegate.swift */; };
 		8BDA5BF51E534F88003A75BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF41E534F88003A75BA /* ViewController.swift */; };
 		8BDA5BF81E534F88003A75BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF61E534F88003A75BA /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8BDA5BEF1E534F88003A75BA /* LabbSwiftMatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabbSwiftMatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDA5BF21E534F88003A75BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BDA5BF41E534F88003A75BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B7971B21E5B3AF600DD3713 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		8BDA5BE61E534F88003A75BA = {
 			isa = PBXGroup;
 			children = (
@@ -58,12 +68,13 @@
 		8BDA5BF11E534F88003A75BA /* LabbSwiftMatApp */ = {
 			isa = PBXGroup;
 			children = (
+				8B7971B21E5B3AF600DD3713 /* Model */,
 				8BDA5BF21E534F88003A75BA /* AppDelegate.swift */,
-				8BDA5BF41E534F88003A75BA /* ViewController.swift */,
 				8BDA5BF61E534F88003A75BA /* Main.storyboard */,
 				8BDA5BF91E534F89003A75BA /* Assets.xcassets */,
 				8BDA5BFB1E534F89003A75BA /* LaunchScreen.storyboard */,
 				8BDA5BFE1E534F89003A75BA /* Info.plist */,
+				8BDA5BF41E534F88003A75BA /* ViewController.swift */,
 				8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */,
 				8BDA5C241E573185003A75BA /* DetailViewController.swift */,
 			);
@@ -144,6 +155,7 @@
 			files = (
 				8BDA5BF51E534F88003A75BA /* ViewController.swift in Sources */,
 				8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */,
+				8B7971B41E5B3D1000DD3713 /* ApiHelper.swift in Sources */,
 				8BDA5C231E5605DD003A75BA /* ResultTableViewController.swift in Sources */,
 				8BDA5C251E573185003A75BA /* DetailViewController.swift in Sources */,
 			);
