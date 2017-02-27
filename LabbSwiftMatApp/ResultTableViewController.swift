@@ -9,12 +9,16 @@
 import UIKit
 
 class Food {
-    var name : String
+    var name : String?
     var number : Int
     var energyValue : Int?
     var protein : Int?
     var fat : Int?
     var carbohydrates : Int?
+    
+    init(number : Int) {
+        self.number = number
+    }
     
     init(name : String, number : Int) {
         self.name = name
@@ -31,12 +35,19 @@ class ResultTableViewCell : UITableViewCell {
 class ResultTableViewController: UITableViewController {
     
     var data : [Food] = []
+    var favorites : [Food] = []
     var searchWord : String = ""
+    let userDef : UserDefaults = UserDefaults.standard
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        if let favlist : [Int] = userDef.array(forKey: "favorites") as! [Int]? {
+            NSLog("Favlist count: \(favlist.count)")
+        } else {
+            NSLog("Failed to set favlist")
+        }
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -76,7 +87,6 @@ class ResultTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc : DetailViewController = segue.destination as! DetailViewController
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            NSLog("Name: \(data[indexPath.row].name) Number: \(data[indexPath.row].number) Fat \(data[indexPath.row].fat!) Energivärde: \(data[indexPath.row].energyValue!) Protein: \(data[indexPath.row].protein!)")
             dvc.food = data[indexPath.row]
         }
         

@@ -23,6 +23,12 @@ class ApiHelper {
                     let jsonOptions = JSONSerialization.ReadingOptions()
                     do {
                         if let parsed = try JSONSerialization.jsonObject(with: actualData, options: jsonOptions) as? [String : Any] {
+                            
+                            if food.name == nil {
+                                let name = parsed["name"] as! String
+                                food.name = name
+                            }
+                            
                             var nutrientValues = parsed["nutrientValues"] as! [String : Any]
                             
                             let energyValue = nutrientValues["energyKcal"] as! Int
@@ -41,7 +47,6 @@ class ApiHelper {
                             //print("carbohydrates :\(carbohydrates )")
                             food.carbohydrates  = carbohydrates
                             block(food)
-                            
                         } else {
                             NSLog("Failed to cast from json.")
                         }
@@ -73,7 +78,7 @@ class ApiHelper {
                     do {
                         if let parsed = try JSONSerialization.jsonObject(with: actualData, options: jsonOptions) as? [[String:Any]] {
                             
-                            print(parsed)
+                            //print(parsed)
                             
                             for item in parsed {
                                 let name = item["name"] as! String
