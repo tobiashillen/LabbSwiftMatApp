@@ -33,19 +33,20 @@ class ResultTableViewCell : UITableViewCell {
 }
 
 class ResultTableViewController: UITableViewController {
+    @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     var data : [Food] = []
     var favorites : [Food] = []
     var searchWord : String = ""
     let userDef : UserDefaults = UserDefaults.standard
+    var favoriteMode : Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let favlist : [Int] = userDef.array(forKey: "favorites") as! [Int]? {
-            NSLog("Favlist count: \(favlist.count)")
-        } else {
-            NSLog("Failed to set favlist")
+        
+        if self.favoriteMode {
+            self.loadFavoriteMode()
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -55,6 +56,36 @@ class ResultTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    @IBAction func modeButton(_ sender: UIBarButtonItem) {
+        self.loadFavoriteMode()
+    }
+    
+    func loadFavoriteMode() {
+        if let favlist : [Int] = userDef.array(forKey: "favorites") as! [Int]? {
+            NSLog("Favlist count: \(favlist.count)")
+            if favlist.count > 0 {
+                self.favorites = ApiHelper.getSimpleFavoriteList(numberList: favlist)
+                var loopIndex = 0
+                for food in self.favorites {
+                    ApiHelper.getAllValuesForSpecificItem(food: food, block: {_ in
+                        loopIndex += 1
+                        if loopIndex == self.favorites.count {
+                            DispatchQueue.main.async {
+                                self.favoriteMode = true
+                                self.tableView.reloadData()
+                                NSLog("Favorite mode activated.")
+                                NSLog("Carb for last object in list: \(self.favorites[self.favorites.count-1].carbohydrates!)")
+                            }
+                        }
+                    })
+                }
+            } else {
+                NSLog("Failed to get favorites from API.")
+            }
+        } else {
+            NSLog("Failed to get favorites from UserDefaults")
+        }
+    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -62,24 +93,43 @@ class ResultTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        if self.favoriteMode {
+            return favorites.count
+        } else {
+            return data.count
+        }
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ResultTableViewCell
-        cell.searchItemTitle.text = data[indexPath.row].name
-        
-        if let energy = data[indexPath.row].energyValue {
-            cell.searchItemEnergyValue.text = "\(energy) kcal"
+        if self.favoriteMode {
+            cell.searchItemTitle.text = favorites[indexPath.row].name
+            if let energy = favorites[indexPath.row].energyValue {
+                cell.searchItemEnergyValue.text = "\(energy) kcal"
+            } else {
+                ApiHelper.getAllValuesForSpecificItem(food: favorites[indexPath.row], block: {newFoodObject in
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
+                })
+                cell.searchItemEnergyValue.text = "-"
+            }
+
         } else {
-            ApiHelper.getAllValuesForSpecificItem(food: data[indexPath.row], block: {newFoodObject in
-                DispatchQueue.main.async {
-                    tableView.reloadData()
-                }
-            })
-            cell.searchItemEnergyValue.text = "-"
+            cell.searchItemTitle.text = data[indexPath.row].name
+            if let energy = data[indexPath.row].energyValue {
+                cell.searchItemEnergyValue.text = "\(energy) kcal"
+            } else {
+                ApiHelper.getAllValuesForSpecificItem(food: data[indexPath.row], block: {newFoodObject in
+                    DispatchQueue.main.async {
+                        tableView.reloadData()
+                    }
+                })
+                cell.searchItemEnergyValue.text = "-"
+            }
         }
+        
         return cell
     }
     
@@ -87,7 +137,11 @@ class ResultTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let dvc : DetailViewController = segue.destination as! DetailViewController
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            dvc.food = data[indexPath.row]
+            if favoriteMode {
+                dvc.food = favorites[indexPath.row]
+            } else {
+                dvc.food = data[indexPath.row]
+            }
         }
         
     }

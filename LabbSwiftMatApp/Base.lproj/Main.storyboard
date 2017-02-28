@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="1085.5999999999999" y="214.54272863568218"/>
         </scene>
-        <!--Result Table View Controller-->
+        <!--Sökresultat-->
         <scene sceneID="lhJ-Lr-ROb">
             <objects>
                 <tableViewController id="tT6-us-rER" customClass="ResultTableViewController" customModule="LabbSwiftMatApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -96,7 +96,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cI-lh-rBg" id="4bm-qI-wna">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matvara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-1f-DUt">
@@ -133,6 +133,16 @@
                             <outlet property="delegate" destination="tT6-us-rER" id="0Qu-X6-2pa"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Sökresultat" id="Ph4-Ng-iw6">
+                        <barButtonItem key="rightBarButtonItem" title="⭐️" id="qTy-dW-1CV">
+                            <connections>
+                                <action selector="modeButton:" destination="tT6-us-rER" id="BwC-CK-gkm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="favoriteButton" destination="qTy-dW-1CV" id="GHB-lK-f0s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTJ-mm-lPv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -1,5 +1,5 @@
 //
-//  WebRequestHelper.swift
+//  ApiHelper.swift
 //  LabbSwiftMatApp
 //
 //  Created by Tobias Hillén on 2017-02-20.
@@ -13,7 +13,7 @@ class ApiHelper {
     static let url : String = "http://www.matapi.se/foodstuff"
     static let jsonOptions = JSONSerialization.ReadingOptions()
     
-    static func getAllValuesForSpecificItem (food : Food, block:@escaping (Food) -> Void) {
+    static func getAllValuesForSpecificItem (food : Food, block:@escaping (Void) -> Void) {
         let number = food.number
         if let url = URL(string: "\(self.url)/\(number)") {
             let request = URLRequest(url: url)
@@ -46,7 +46,7 @@ class ApiHelper {
                             let carbohydrates  = nutrientValues["carbohydrates"] as! Int
                             //print("carbohydrates :\(carbohydrates )")
                             food.carbohydrates  = carbohydrates
-                            block(food)
+                            block()
                         } else {
                             NSLog("Failed to cast from json.")
                         }
@@ -106,6 +106,16 @@ class ApiHelper {
             NSLog("Failed to create url.")
         }
     }
+    
+    static func getSimpleFavoriteList (numberList : [Int]) -> [Food] {
+        var simpleFavoriteList : [Food] = []
+        for num in numberList {
+            let food = Food(number: num)
+            simpleFavoriteList.append(food)
+        }
+        return simpleFavoriteList
+    }
+
     
 }
 
