@@ -18,16 +18,41 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var favoriteButton: UIButton!
     
     var food : Food?
+    var isSavedToFavorites : Bool?
     var color : UIColor?
+    let userDef : UserDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
         color = (favoriteButton.titleLabel?.textColor)!
-        loadData()
+        checkFavoritesForCurrentFood()
+        loadAllData()
+    }
+    
+    func checkFavoritesForCurrentFood() {
+        var foundInFavorites = false
+        if let favoritesNumberList : [Int] = userDef.array(forKey: "favorites") as? [Int],
+            let currentFoodNumber = food?.number {
+            for number in favoritesNumberList {
+                if number == currentFoodNumber {
+                    foundInFavorites = true
+                    NSLog("Current food object is already in favorites list.")
+                }
+            }
+            if foundInFavorites {
+                favoriteButton.setTitle("Ta bort från favoriter", for: .normal)
+                isSavedToFavorites = true
+            } else {
+                favoriteButton.setTitle("Spara som favorit", for: .normal)
+                isSavedToFavorites = false
+            }
+        } else {
+            NSLog("Unable to check for food-number in favorites list.")
+        }
     }
     
     //  Setting all views with data from Food-object. Sending new API-request if any values are missing.
-    func loadData () {
+    func loadAllData () {
         if let name = food?.name {
             detailTitleLabel.text = name
         } else {
@@ -43,7 +68,6 @@ class DetailViewController: UIViewController {
             proteinLabel.text = "Protein: \(protein)"
             carbohydratesLabel.text = "Kolhydrater: \(carbohydrates)"
             NSLog("DetailView: Data set to views")
-            self.enableFavoriteButton()
         } else {
             energyLabel.text = "Energivärde: Laddar..."
             fatLabel.text = "Fett: Laddar..."
@@ -52,31 +76,52 @@ class DetailViewController: UIViewController {
             ApiHelper.getAllValuesForSpecificItem(food: food!, block: {_ in
                 DispatchQueue.main.async {
                     NSLog("DetailView: Data from API recieved.")
-                    self.loadData()
+                    self.loadAllData()
                 }
             })
             NSLog("DetailView: Waiting for data from API.")
-            self.disableFavoriteButton()
         }
 
     }
     
-    func disableFavoriteButton() {
-        favoriteButton.setTitleColor(UIColor .lightGray, for: .normal)
-        favoriteButton.isEnabled = false
+    @IBAction func saveOrDeleteFavorite(_ sender: UIButton) {
+        if let saved = isSavedToFavorites {
+            if saved {
+                deleteFromFavorite()
+            } else {
+                saveToFavorites()
+            }
+        } else {
+            NSLog("Unable to save favorite.")
+        }
     }
     
-    func enableFavoriteButton() {
-        favoriteButton.setTitleColor(color, for: .normal)
-        favoriteButton.isEnabled = true
+    func deleteFromFavorite() {
+        if var favoritesNumberList : [Int] = userDef.array(forKey: "favorites") as? [Int],
+            let currentFoodNumber = food?.number {
+                for (index, number) in favoritesNumberList.enumerated() {
+                    if number == currentFoodNumber {
+                        favoriteButton.setTitle("Spara som favorit", for: .normal)
+                        favoritesNumberList.remove(at: index)
+                        isSavedToFavorites = false
+                        userDef.set(favoritesNumberList, forKey: "favorites")
+                        userDef.synchronize()
+                        NSLog("Removed object from favorites.")
+                    }
+            }
+        } else {
+            NSLog("Unable to save favorite.")
+        }
     }
     
-    @IBAction func saveFavorite(_ sender: UIButton) {
-        let userDef : UserDefaults = UserDefaults.standard
+    
+    func saveToFavorites() {
         if var favList : [Int] = userDef.array(forKey: "favorites") as? [Int] {
             favList.append(food!.number)
             userDef.set(favList, forKey: "favorites")
             userDef.synchronize()
+            isSavedToFavorites = true
+            favoriteButton.setTitle("Ta bort från favoriter", for: .normal)
             NSLog("New favorite food saved: \(food!.name!)")
         } else {
             if let number = food?.number {
@@ -84,13 +129,14 @@ class DetailViewController: UIViewController {
                 favList.append(number)
                 userDef.set(favList, forKey: "favorites")
                 userDef.synchronize()
+                favoriteButton.setTitle("Ta bort från favoriter", for: .normal)
+                isSavedToFavorites = true
                 NSLog("First favorite food saved: \(food!.name!)")
             } else {
                 NSLog("Failed to save favorite food.")
             }
         }
-        sender.setTitleColor(UIColor .lightGray, for: .normal)
-        sender.isEnabled = false
+
     }
     
     @IBAction func takePhoto(_ sender: UIButton) {

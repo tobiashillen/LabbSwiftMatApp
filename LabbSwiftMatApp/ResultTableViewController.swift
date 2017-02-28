@@ -33,6 +33,7 @@ class ResultTableViewCell : UITableViewCell {
 }
 
 class ResultTableViewController: UITableViewController {
+    
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
     
     var data : [Food] = []
@@ -56,8 +57,19 @@ class ResultTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if self.favoriteMode {
+            self.loadFavoriteMode()
+        }
+
+    }
+    
     @IBAction func modeButton(_ sender: UIBarButtonItem) {
-        self.loadFavoriteMode()
+        if favoriteMode {
+            self.loadSearchMode()
+        } else {
+            self.loadFavoriteMode()
+        }
     }
     
     func loadFavoriteMode() {
@@ -66,15 +78,16 @@ class ResultTableViewController: UITableViewController {
             if favlist.count > 0 {
                 self.favorites = ApiHelper.getSimpleFavoriteList(numberList: favlist)
                 var loopIndex = 0
-                for food in self.favorites {
+                for food in favorites {
                     ApiHelper.getAllValuesForSpecificItem(food: food, block: {_ in
                         loopIndex += 1
                         if loopIndex == self.favorites.count {
                             DispatchQueue.main.async {
                                 self.favoriteMode = true
-                                self.tableView.reloadData()
+                                self.title = "Favoriter"
                                 NSLog("Favorite mode activated.")
-                                NSLog("Carb for last object in list: \(self.favorites[self.favorites.count-1].carbohydrates!)")
+                                self.favoriteButton.title = "🔍"
+                                self.tableView.reloadData()
                             }
                         }
                     })
@@ -85,6 +98,13 @@ class ResultTableViewController: UITableViewController {
         } else {
             NSLog("Failed to get favorites from UserDefaults")
         }
+    }
+    
+    func loadSearchMode() {
+        self.favoriteMode = false
+        self.title = "Sökresultat"
+        self.favoriteButton.title = "⭐️"
+        self.tableView.reloadData()
     }
     // MARK: - Table view data source
     

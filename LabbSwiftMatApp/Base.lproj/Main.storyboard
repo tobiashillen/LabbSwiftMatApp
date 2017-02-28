@@ -224,7 +224,7 @@
                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="saveFavorite:" destination="fXp-jS-SSY" eventType="touchUpInside" id="rq9-K6-QEe"/>
+                                    <action selector="saveOrDeleteFavorite:" destination="fXp-jS-SSY" eventType="touchUpInside" id="5yi-3x-Vlx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSz-Pu-X60">
