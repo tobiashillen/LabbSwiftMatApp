@@ -15,6 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
     @IBOutlet weak var carbohydratesLabel: UILabel!
+    @IBOutlet weak var healthValueLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
     
     var food : Food?
@@ -74,12 +75,14 @@ class DetailViewController: UIViewController {
             fatLabel.text = "Fett: \(fat)"
             proteinLabel.text = "Protein: \(protein)"
             carbohydratesLabel.text = "Kolhydrater: \(carbohydrates)"
+            healthValueLabel.text = "Nyttighetsvärde: \(food!.getHealthValue())"
             NSLog("DetailView: Data set to views")
         } else {
             energyLabel.text = "Energivärde: Laddar..."
             fatLabel.text = "Fett: Laddar..."
             proteinLabel.text = "Protein: Laddar..."
             carbohydratesLabel.text = "Kolhydrater: Laddar..."
+            healthValueLabel.text = "Nyttighetsvärde: Laddar..."
             ApiHelper.getAllValuesForSpecificItem(food: food!, block: {_ in
                 DispatchQueue.main.async {
                     NSLog("DetailView: Data from API recieved.")
