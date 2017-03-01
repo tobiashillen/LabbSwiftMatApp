@@ -8,9 +8,10 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var detailTitleLabel: UILabel!
+    @IBOutlet weak var foodImage: UIImageView!
     @IBOutlet weak var energyLabel: UILabel!
     @IBOutlet weak var fatLabel: UILabel!
     @IBOutlet weak var proteinLabel: UILabel!
@@ -26,6 +27,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         color = (favoriteButton.titleLabel?.textColor)!
+        
+        if let savedImage = UIImage(contentsOfFile: imagePath) {
+            foodImage.image = savedImage
+        } else {
+            NSLog("No image to load from: \(imagePath)")
+        }
+        
         checkFavoritesForCurrentFood()
         loadAllData()
     }
@@ -150,8 +158,58 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func takePhoto(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
         
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker.sourceType = .camera
+        }
+        else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            imagePicker.sourceType = .savedPhotosAlbum
+        }
+        else {
+            NSLog("No image source available.")
+        }
+        
+        present(imagePicker, animated: true, completion: nil)
     }
+    
+    func imagePickerController(_ imagePicker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerEditedImage] as! UIImage
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        
+        if let imageData = UIImagePNGRepresentation(image) {
+            do {
+                let url = URL(fileURLWithPath: imagePath)
+                try imageData.write(to: url)
+                NSLog("Png image saved to: \(imagePath)")
+            }
+            catch let error {
+                NSLog("Failed to save png image data: \(error)")
+            }
+        }
+        
+        foodImage.image = image
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+        NSLog("Image picker dismissed.")
+    }
+    
+    var imagePath : String {
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        if let documentsDirectory = paths.first {
+            return documentsDirectory.appending("/\(food!.number).png")
+        } else {
+            fatalError("Could not load image path.")
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

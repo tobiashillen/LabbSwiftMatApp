@@ -274,6 +274,7 @@
                         <outlet property="energyLabel" destination="kh0-bU-XtP" id="LiF-67-SU7"/>
                         <outlet property="fatLabel" destination="mo7-i7-LoD" id="XAV-VB-lvx"/>
                         <outlet property="favoriteButton" destination="sbp-3B-GF2" id="qmd-tB-A4n"/>
+                        <outlet property="foodImage" destination="daB-SS-cGW" id="KVe-cj-h9O"/>
                         <outlet property="healthValueLabel" destination="3Og-44-aid" id="UPi-a8-sVp"/>
                         <outlet property="proteinLabel" destination="6wM-W1-JgB" id="Vdd-YX-zFb"/>
                     </connections>
