@@ -31,23 +31,30 @@ class DetailViewController: UIViewController {
     
     func checkFavoritesForCurrentFood() {
         var foundInFavorites = false
-        if let favoritesNumberList : [Int] = userDef.array(forKey: "favorites") as? [Int],
-            let currentFoodNumber = food?.number {
-            for number in favoritesNumberList {
-                if number == currentFoodNumber {
-                    foundInFavorites = true
-                    NSLog("Current food object is already in favorites list.")
+        if let currentFoodNumber = food?.number {
+            if let favoritesNumberList : [Int] = userDef.array(forKey: "favorites") as? [Int] {
+                for number in favoritesNumberList {
+                    if number == currentFoodNumber {
+                        foundInFavorites = true
+                        NSLog("Current food object is already in favorites list.")
+                    }
                 }
-            }
-            if foundInFavorites {
-                favoriteButton.setTitle("Ta bort från favoriter", for: .normal)
-                isSavedToFavorites = true
+                if foundInFavorites {
+                    favoriteButton.setTitle("Ta bort från favoriter", for: .normal)
+                    isSavedToFavorites = true
+                } else {
+                    favoriteButton.setTitle("Spara som favorit", for: .normal)
+                    isSavedToFavorites = false
+                }
             } else {
+                let list : [Int] = []
+                userDef.set(list, forKey: "favorites")
+                userDef.synchronize()
                 favoriteButton.setTitle("Spara som favorit", for: .normal)
                 isSavedToFavorites = false
             }
         } else {
-            NSLog("Unable to check for food-number in favorites list.")
+            NSLog("Unable to load current food number.")
         }
     }
     

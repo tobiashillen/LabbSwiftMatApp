@@ -49,24 +49,17 @@ class ResultTableViewController: UITableViewController {
         if self.favoriteMode {
             self.loadFavoriteMode()
         }
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         if self.favoriteMode {
             self.loadFavoriteMode()
         }
-
     }
     
     @IBAction func modeButton(_ sender: UIBarButtonItem) {
         if favoriteMode {
-            self.loadSearchMode()
+            self.setUpViewForSearchMode()
         } else {
             self.loadFavoriteMode()
         }
@@ -74,37 +67,47 @@ class ResultTableViewController: UITableViewController {
     
     func loadFavoriteMode() {
         if let favlist : [Int] = userDef.array(forKey: "favorites") as! [Int]? {
-            NSLog("Favlist count: \(favlist.count)")
             if favlist.count > 0 {
+                NSLog("Favlist count: \(favlist.count)")
                 self.favorites = ApiHelper.getSimpleFavoriteList(numberList: favlist)
-                var loopIndex = 0
-                for food in favorites {
-                    ApiHelper.getAllValuesForSpecificItem(food: food, block: {_ in
-                        loopIndex += 1
-                        if loopIndex == self.favorites.count {
-                            DispatchQueue.main.async {
-                                self.favoriteMode = true
-                                self.title = "Favoriter"
-                                NSLog("Favorite mode activated.")
-                                self.favoriteButton.title = "🔍"
-                                self.tableView.reloadData()
+                    var count = favorites.count
+                    for (food) in favorites {
+                        ApiHelper.getAllValuesForSpecificItem(food: food, block: {_ in
+                            count -= 1
+                            NSLog("Count: \(count)")
+                            if count == 0 {
+                                DispatchQueue.main.async {
+                                    self.setUpViewForFavoriteMode()
+                                }
                             }
-                        }
-                    })
-                }
+                        })
+                    }
             } else {
-                NSLog("Failed to get favorites from API.")
+                favorites.removeAll()
+                setUpViewForFavoriteMode()
             }
         } else {
-            NSLog("Failed to get favorites from UserDefaults")
+            let list : [Int] = []
+            userDef.set(list, forKey: "favorites")
+            userDef.synchronize()
+            setUpViewForFavoriteMode()
         }
     }
     
-    func loadSearchMode() {
+    func setUpViewForFavoriteMode() {
+        self.favoriteMode = true
+        self.title = "Favoriter"
+        self.favoriteButton.title = "🔍"
+        self.tableView.reloadData()
+        NSLog("Favorite mode activated.")
+    }
+    
+    func setUpViewForSearchMode() {
         self.favoriteMode = false
         self.title = "Sökresultat"
         self.favoriteButton.title = "⭐️"
         self.tableView.reloadData()
+        NSLog("Search mode activated")
     }
     // MARK: - Table view data source
     
