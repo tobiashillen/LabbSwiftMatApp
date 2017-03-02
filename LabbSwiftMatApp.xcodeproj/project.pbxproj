@@ -10,6 +10,7 @@
 		15EAF729E3A29FF6039D9D2C /* Pods_LabbSwiftMatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0152F9516560FC7657971274 /* Pods_LabbSwiftMatApp.framework */; };
 		8B1C4AB61E6842E700096C70 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1C4AB51E6842E700096C70 /* Food.swift */; };
 		8B7971B41E5B3D1000DD3713 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */; };
+		8BBF968F1E68619200C8E009 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBF968E1E68619200C8E009 /* CompareViewController.swift */; };
 		8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF21E534F88003A75BA /* AppDelegate.swift */; };
 		8BDA5BF51E534F88003A75BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF41E534F88003A75BA /* ViewController.swift */; };
 		8BDA5BF81E534F88003A75BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF61E534F88003A75BA /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		5848E2D5B0A4FDFB6C81A9DC /* Pods-LabbSwiftMatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabbSwiftMatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabbSwiftMatApp/Pods-LabbSwiftMatApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B1C4AB51E6842E700096C70 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		8BBF968E1E68619200C8E009 /* CompareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 		8BDA5BEF1E534F88003A75BA /* LabbSwiftMatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabbSwiftMatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BDA5BF21E534F88003A75BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BDA5BF41E534F88003A75BA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				8BDA5BF41E534F88003A75BA /* ViewController.swift */,
 				8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */,
 				8BDA5C241E573185003A75BA /* DetailViewController.swift */,
+				8BBF968E1E68619200C8E009 /* CompareViewController.swift */,
 			);
 			path = LabbSwiftMatApp;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			files = (
 				8BDA5BF51E534F88003A75BA /* ViewController.swift in Sources */,
 				8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */,
+				8BBF968F1E68619200C8E009 /* CompareViewController.swift in Sources */,
 				8B7971B41E5B3D1000DD3713 /* ApiHelper.swift in Sources */,
 				8BDA5C231E5605DD003A75BA /* ResultTableViewController.swift in Sources */,
 				8BDA5C251E573185003A75BA /* DetailViewController.swift in Sources */,

@@ -84,6 +84,24 @@
             </objects>
             <point key="canvasLocation" x="1085.5999999999999" y="214.54272863568218"/>
         </scene>
+        <!--Compare View Controller-->
+        <scene sceneID="E7l-aL-gIl">
+            <objects>
+                <viewController id="ddR-Sx-zfG" customClass="CompareViewController" customModule="LabbSwiftMatApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zI8-sM-5Uc"/>
+                        <viewControllerLayoutGuide type="bottom" id="9kD-4V-SZw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ToH-bJ-1RZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d94-s7-ecd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2654" y="-165"/>
+        </scene>
         <!--Sökresultat-->
         <scene sceneID="lhJ-Lr-ROb">
             <objects>
@@ -98,7 +116,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cI-lh-rBg" id="4bm-qI-wna">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matvara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-1f-DUt">
@@ -142,7 +160,7 @@
                                     <outlet property="checkBox" destination="74Z-dx-2r0" id="8tS-4g-73K"/>
                                     <outlet property="searchItemEnergyValue" destination="Yeg-kk-5gY" id="x4h-G5-N7q"/>
                                     <outlet property="searchItemTitle" destination="wkc-1f-DUt" id="VcD-rp-bD6"/>
-                                    <segue destination="fXp-jS-SSY" kind="show" id="bp1-l8-oyn"/>
+                                    <segue destination="fXp-jS-SSY" kind="show" identifier="detail" id="bp1-l8-oyn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -158,7 +176,11 @@
                                     <action selector="modeButton:" destination="tT6-us-rER" id="BwC-CK-gkm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="⚖" id="yEx-Sr-kK6"/>
+                            <barButtonItem title="⚖" id="yEx-Sr-kK6">
+                                <connections>
+                                    <segue destination="ddR-Sx-zfG" kind="show" identifier="compare" id="61u-Lp-zis"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -302,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZc-GK-sNf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2689.8550724637685" y="214.4021739130435"/>
+            <point key="canvasLocation" x="2654" y="518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZlF-71-1hw">

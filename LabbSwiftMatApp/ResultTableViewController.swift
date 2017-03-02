@@ -12,8 +12,37 @@ import BEMCheckBox
 
 class ResultTableViewCell : UITableViewCell {
     
+    var food : Food!
+    weak var rtvc : ResultTableViewController!
+    
     @IBAction func boxChecked(_ sender: BEMCheckBox) {
         
+        if sender.on {
+            var isChecked = false
+            for selectedFood in rtvc.selectedFoodItems {
+                if food.number == selectedFood?.number {
+                    isChecked = true
+                }
+            }
+            
+            if !isChecked {
+                rtvc.selectedFoodItems.append(food)
+                if rtvc.selectedFoodItems.count > 2 {
+                    rtvc.selectedFoodItems.removeFirst()
+                }
+            }
+
+        } else {
+            for (index, selectedFood) in rtvc.selectedFoodItems.enumerated() {
+                if food.number == selectedFood?.number {
+                     rtvc.selectedFoodItems.remove(at: index)
+                }
+            }
+        }
+        
+        rtvc.tableView.reloadData()
+        NSLog("\(rtvc.selectedFoodItems.count)")
+        NSLog(food!.name!)
     }
     
     @IBOutlet weak var searchItemTitle: UILabel!
@@ -24,13 +53,13 @@ class ResultTableViewCell : UITableViewCell {
 class ResultTableViewController: UITableViewController {
     
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
-    
+
     var data : [Food] = []
     var favorites : [Food] = []
+    var selectedFoodItems : [Food?] = []
     var searchWord : String = ""
     let userDef : UserDefaults = UserDefaults.standard
     var favoriteMode : Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +127,7 @@ class ResultTableViewController: UITableViewController {
         self.tableView.reloadData()
         NSLog("Search mode activated")
     }
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -115,6 +145,7 @@ class ResultTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ResultTableViewCell
+        
         if self.favoriteMode {
             cell.searchItemTitle.text = favorites[indexPath.row].name
             if let energy = favorites[indexPath.row].energyValue {
@@ -127,7 +158,7 @@ class ResultTableViewController: UITableViewController {
                 })
                 cell.searchItemEnergyValue.text = "-"
             }
-
+            cell.food = favorites[indexPath.row]
         } else {
             cell.searchItemTitle.text = data[indexPath.row].name
             if let energy = data[indexPath.row].energyValue {
@@ -140,23 +171,27 @@ class ResultTableViewController: UITableViewController {
                 })
                 cell.searchItemEnergyValue.text = "-"
             }
+            cell.food = data[indexPath.row]
+        }
+        
+        cell.rtvc = self
+        var isChecked = false
+        for selectedFood in selectedFoodItems {
+            if selectedFood?.number == cell.food.number {
+                isChecked = true
+            }
+        }
+        
+        if isChecked {
+            cell.checkBox.on = true
+        } else {
+            cell.checkBox.on = false
         }
         
         return cell
     }
     
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let dvc : DetailViewController = segue.destination as! DetailViewController
-        if let indexPath = self.tableView.indexPathForSelectedRow {
-            if favoriteMode {
-                dvc.food = favorites[indexPath.row]
-            } else {
-                dvc.food = data[indexPath.row]
-            }
-        }
-        
-    }
+
     
     /*
      // Override to support conditional editing of the table view.
@@ -193,14 +228,28 @@ class ResultTableViewController: UITableViewController {
      }
      */
     
-    /*
+
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail"{
+            let dvc : DetailViewController = segue.destination as! DetailViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                if favoriteMode {
+                    dvc.food = favorites[indexPath.row]
+                } else {
+                    dvc.food = data[indexPath.row]
+                }
+            }
+        } else if segue.identifier == "compare" {
+            let cvc : CompareViewController = segue.destination as! CompareViewController
+            
+            if let firstCompareFood = self.selectedFoodItems[0] {
+                cvc.firstCompareFood = firstCompareFood
+            }
+            if let secondCompareFood = self.selectedFoodItems[1] {
+                cvc.secondCompareFood = secondCompareFood
+            }
+        }
+    }
 }
