@@ -9,6 +9,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -91,6 +92,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="4cI-lh-rBg" customClass="ResultTableViewCell" customModule="LabbSwiftMatApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -100,28 +102,44 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matvara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-1f-DUt">
-                                            <rect key="frame" x="8" y="8" width="310.66666666666669" height="17"/>
+                                            <rect key="frame" x="38.333333333333343" y="14" width="282.66666666666663" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74Z-dx-2r0" customClass="BEMCheckBox">
+                                            <rect key="frame" x="7.9999999999999982" y="11" width="22.333333333333329" height="21.666666666666664"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="74Z-dx-2r0" secondAttribute="height" multiplier="1:1" id="pHR-BR-0eB"/>
+                                            </constraints>
+                                            <connections>
+                                                <action selector="boxChecked:" destination="4cI-lh-rBg" eventType="valueChanged" id="sWv-6O-stI"/>
+                                            </connections>
+                                        </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 kcal" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yeg-kk-5gY">
-                                            <rect key="frame" x="323.33333333333326" y="8" width="82.666666666666686" height="17"/>
+                                            <rect key="frame" x="321" y="13" width="85" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="85" id="sP5-7u-L4Q"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="leading" secondItem="4bm-qI-wna" secondAttribute="leadingMargin" id="1ZL-cV-s3h"/>
-                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="width" secondItem="4bm-qI-wna" secondAttribute="width" multiplier="0.75" id="N7U-Hz-2Uf"/>
-                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="width" secondItem="4bm-qI-wna" secondAttribute="width" multiplier="0.2" id="QGt-Xa-h4P"/>
-                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="top" secondItem="4bm-qI-wna" secondAttribute="topMargin" id="Set-4U-wKJ"/>
-                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="top" secondItem="4bm-qI-wna" secondAttribute="topMargin" id="ehr-pf-E8v"/>
-                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="trailing" secondItem="4bm-qI-wna" secondAttribute="trailingMargin" id="uRP-HR-VMH"/>
+                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="leading" secondItem="wkc-1f-DUt" secondAttribute="trailing" id="E6m-hI-QOE"/>
+                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="centerY" secondItem="4bm-qI-wna" secondAttribute="centerY" id="HNK-7b-4YX"/>
+                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="centerY" secondItem="4bm-qI-wna" secondAttribute="centerY" id="SQl-JT-CmN"/>
+                                        <constraint firstItem="Yeg-kk-5gY" firstAttribute="trailing" secondItem="4bm-qI-wna" secondAttribute="trailingMargin" id="UpM-iV-M2A"/>
+                                        <constraint firstItem="wkc-1f-DUt" firstAttribute="leading" secondItem="74Z-dx-2r0" secondAttribute="trailing" constant="8" symbolic="YES" id="e6Q-cs-V41"/>
+                                        <constraint firstItem="74Z-dx-2r0" firstAttribute="centerY" secondItem="4bm-qI-wna" secondAttribute="centerY" id="hn9-pZ-lMV"/>
+                                        <constraint firstItem="74Z-dx-2r0" firstAttribute="height" secondItem="4bm-qI-wna" secondAttribute="height" multiplier="0.5" id="vSw-dr-bcB"/>
+                                        <constraint firstItem="74Z-dx-2r0" firstAttribute="leading" secondItem="4bm-qI-wna" secondAttribute="leading" constant="8" id="z41-Ql-YpF"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="checkBox" destination="74Z-dx-2r0" id="8tS-4g-73K"/>
                                     <outlet property="searchItemEnergyValue" destination="Yeg-kk-5gY" id="x4h-G5-N7q"/>
                                     <outlet property="searchItemTitle" destination="wkc-1f-DUt" id="VcD-rp-bD6"/>
                                     <segue destination="fXp-jS-SSY" kind="show" id="bp1-l8-oyn"/>
@@ -134,11 +152,14 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Sökresultat" id="Ph4-Ng-iw6">
-                        <barButtonItem key="rightBarButtonItem" title="⭐️" id="qTy-dW-1CV">
-                            <connections>
-                                <action selector="modeButton:" destination="tT6-us-rER" id="BwC-CK-gkm"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="⭐️" id="qTy-dW-1CV">
+                                <connections>
+                                    <action selector="modeButton:" destination="tT6-us-rER" id="BwC-CK-gkm"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="⚖" id="yEx-Sr-kK6"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="favoriteButton" destination="qTy-dW-1CV" id="GHB-lK-f0s"/>
@@ -243,7 +264,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mo7-i7-LoD" firstAttribute="leading" secondItem="6wM-W1-JgB" secondAttribute="leading" id="4IE-a3-Htl"/>
                             <constraint firstItem="kh0-bU-XtP" firstAttribute="top" secondItem="daB-SS-cGW" secondAttribute="bottom" constant="8" symbolic="YES" id="4b8-nd-bog"/>

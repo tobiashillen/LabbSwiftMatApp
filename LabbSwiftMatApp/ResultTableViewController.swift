@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import BEMCheckBox
+
 
 class ResultTableViewCell : UITableViewCell {
     
+    @IBAction func boxChecked(_ sender: BEMCheckBox) {
+        
+    }
+    
     @IBOutlet weak var searchItemTitle: UILabel!
     @IBOutlet weak var searchItemEnergyValue: UILabel!
+    @IBOutlet weak var checkBox: BEMCheckBox!
 }
 
 class ResultTableViewController: UITableViewController {

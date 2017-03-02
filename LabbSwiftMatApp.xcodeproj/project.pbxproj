@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15EAF729E3A29FF6039D9D2C /* Pods_LabbSwiftMatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0152F9516560FC7657971274 /* Pods_LabbSwiftMatApp.framework */; };
 		8B1C4AB61E6842E700096C70 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1C4AB51E6842E700096C70 /* Food.swift */; };
 		8B7971B41E5B3D1000DD3713 /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */; };
 		8BDA5BF31E534F88003A75BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDA5BF21E534F88003A75BA /* AppDelegate.swift */; };
@@ -19,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0152F9516560FC7657971274 /* Pods_LabbSwiftMatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LabbSwiftMatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5848E2D5B0A4FDFB6C81A9DC /* Pods-LabbSwiftMatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabbSwiftMatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-LabbSwiftMatApp/Pods-LabbSwiftMatApp.release.xcconfig"; sourceTree = "<group>"; };
 		8B1C4AB51E6842E700096C70 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		8BDA5BEF1E534F88003A75BA /* LabbSwiftMatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabbSwiftMatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -30,6 +33,7 @@
 		8BDA5BFE1E534F89003A75BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BDA5C221E5605DD003A75BA /* ResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		8BDA5C241E573185003A75BA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B82351E60A52E3068AA51834 /* Pods-LabbSwiftMatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LabbSwiftMatApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LabbSwiftMatApp/Pods-LabbSwiftMatApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15EAF729E3A29FF6039D9D2C /* Pods_LabbSwiftMatApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +62,8 @@
 			children = (
 				8BDA5BF11E534F88003A75BA /* LabbSwiftMatApp */,
 				8BDA5BF01E534F88003A75BA /* Products */,
+				E7CD52D6B42C382F790C94A4 /* Pods */,
+				C754428A548B987667367444 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +91,23 @@
 			path = LabbSwiftMatApp;
 			sourceTree = "<group>";
 		};
+		C754428A548B987667367444 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0152F9516560FC7657971274 /* Pods_LabbSwiftMatApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E7CD52D6B42C382F790C94A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B82351E60A52E3068AA51834 /* Pods-LabbSwiftMatApp.debug.xcconfig */,
+				5848E2D5B0A4FDFB6C81A9DC /* Pods-LabbSwiftMatApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,9 +115,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BDA5C011E534F89003A75BA /* Build configuration list for PBXNativeTarget "LabbSwiftMatApp" */;
 			buildPhases = (
+				1A93D0B12D8CA401C90CCE1B /* [CP] Check Pods Manifest.lock */,
 				8BDA5BEB1E534F88003A75BA /* Sources */,
 				8BDA5BEC1E534F88003A75BA /* Frameworks */,
 				8BDA5BED1E534F88003A75BA /* Resources */,
+				9E0EFB54E7A944237916BDFB /* [CP] Embed Pods Frameworks */,
+				CB607DFD2ECCD893BEF10379 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -150,6 +177,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1A93D0B12D8CA401C90CCE1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		9E0EFB54E7A944237916BDFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LabbSwiftMatApp/Pods-LabbSwiftMatApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB607DFD2ECCD893BEF10379 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LabbSwiftMatApp/Pods-LabbSwiftMatApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8BDA5BEB1E534F88003A75BA /* Sources */ = {
@@ -280,6 +355,7 @@
 		};
 		8BDA5C021E534F89003A75BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B82351E60A52E3068AA51834 /* Pods-LabbSwiftMatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LabbSwiftMatApp/Info.plist;
@@ -292,6 +368,7 @@
 		};
 		8BDA5C031E534F89003A75BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5848E2D5B0A4FDFB6C81A9DC /* Pods-LabbSwiftMatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LabbSwiftMatApp/Info.plist;
