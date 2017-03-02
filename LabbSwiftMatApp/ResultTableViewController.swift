@@ -8,39 +8,6 @@
 
 import UIKit
 
-class Food {
-    var name : String?
-    var number : Int
-    var energyValue : Int?
-    var protein : Int?
-    var fat : Int?
-    var carbohydrates : Int?
-    
-    init(number : Int) {
-        self.number = number
-    }
-    
-    init(name : String, number : Int) {
-        self.name = name
-        self.number = number
-    }
-    
-    func getHealthValue() -> Int {
-        var healthValue = 0
-        if let energyValue = self.energyValue,
-            let protein = self.protein,
-            let fat = self.fat {
-            healthValue = (energyValue + (protein*15))
-            if fat > 0 {
-                healthValue = healthValue/fat
-            } else {
-                healthValue *= 2
-            }
-        }
-        return healthValue
-    }
-}
-
 class ResultTableViewCell : UITableViewCell {
     
     @IBOutlet weak var searchItemTitle: UILabel!

@@ -83,7 +83,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             fatLabel.text = "Fett: \(fat)"
             proteinLabel.text = "Protein: \(protein)"
             carbohydratesLabel.text = "Kolhydrater: \(carbohydrates)"
-            healthValueLabel.text = "Nyttighetsvärde: \(food!.getHealthValue())"
+            healthValueLabel.text = "Nyttighetsvärde: \(food!.healthValue)"
             NSLog("DetailView: Data set to views")
         } else {
             energyLabel.text = "Energivärde: Laddar..."
