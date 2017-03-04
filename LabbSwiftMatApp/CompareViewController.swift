@@ -42,19 +42,43 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
     public func valueForBar(at index: Int) -> NSNumber! {
         switch index {
         case 0:
-            return firstCompareFood.fat! as NSNumber!
+            if let firstFat = firstCompareFood.fat {
+                return firstFat as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         case 1:
-            return secondCompareFood.fat! as NSNumber!
+            if let secondFat = secondCompareFood.fat {
+                return secondFat as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         case 2:
-            return firstCompareFood.protein! as NSNumber!
+            if let firstProtein = firstCompareFood.protein {
+                return firstProtein as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         case 3:
-            return secondCompareFood.protein! as NSNumber!
+            if let secondProtein = secondCompareFood.protein {
+                return secondProtein as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         case 4:
-            return firstCompareFood.carbohydrates! as NSNumber!
+            if let firstCarbohydrates = firstCompareFood.carbohydrates {
+                return firstCarbohydrates as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         case 5:
-            return secondCompareFood.carbohydrates! as NSNumber!
+            if let secondCarbohydrates = secondCompareFood.carbohydrates {
+                return secondCarbohydrates as NSNumber!
+            } else {
+                return NSNumber(integerLiteral: 0)
+            }
         default:
-            return 0
+            return NSNumber(integerLiteral: 0)
         }
     }
     
@@ -75,19 +99,43 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
     public func titleForBar(at index: Int) -> String! {
         switch index {
         case 0:
-            return ("\(firstCompareFood.fat!)")
+            if let firstFat = firstCompareFood.fat {
+                return ("\(firstFat) %")
+            } else {
+                return "-"
+            }
         case 1:
-            return ("\(secondCompareFood.fat!)")
+            if let secondFat = secondCompareFood.fat {
+                return ("\(secondFat) %")
+            } else {
+                return "-"
+            }
         case 2:
-            return ("\(firstCompareFood.protein!)")
+            if let firstProtein = firstCompareFood.protein {
+                return ("\(firstProtein) %")
+            } else {
+                return "-"
+            }
         case 3:
-            return ("\(secondCompareFood.protein!)")
+            if let secondProtein = secondCompareFood.protein {
+                return ("\(secondProtein) %")
+            } else {
+                return "-"
+            }
         case 4:
-            return ("\(firstCompareFood.carbohydrates!)")
+            if let firstCarbohydrates = firstCompareFood.carbohydrates {
+                return ("\(firstCarbohydrates) %")
+            } else {
+                return "-"
+            }
         case 5:
-            return ("\(secondCompareFood.carbohydrates!)")
+            if let secondCarbohydrates = secondCompareFood.carbohydrates {
+                return ("\(secondCarbohydrates) %")
+            } else {
+                return "-"
+            }
         default:
-            return ""
+            return "-"
         }
     }
 }
