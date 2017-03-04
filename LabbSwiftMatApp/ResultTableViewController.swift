@@ -40,6 +40,12 @@ class ResultTableViewCell : UITableViewCell {
             }
         }
         
+        if rtvc.selectedFoodItems.count == 2 {
+            rtvc.compareButton.isEnabled = true
+        } else {
+            rtvc.compareButton.isEnabled = false
+        }
+        
         rtvc.tableView.reloadData()
         NSLog("\(rtvc.selectedFoodItems.count)")
         NSLog(food!.name!)
@@ -54,6 +60,7 @@ class ResultTableViewController: UITableViewController {
     
     @IBOutlet weak var favoriteButton: UIBarButtonItem!
 
+    @IBOutlet weak var compareButton: UIBarButtonItem!
     var data : [Food] = []
     var favorites : [Food] = []
     var selectedFoodItems : [Food?] = []
@@ -63,7 +70,7 @@ class ResultTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        compareButton.isEnabled = false
         if self.favoriteMode {
             self.loadFavoriteMode()
         }
@@ -244,6 +251,8 @@ class ResultTableViewController: UITableViewController {
         } else if segue.identifier == "compare" {
             let cvc : CompareViewController = segue.destination as! CompareViewController
             
+            
+            ///FIXA
             if let firstCompareFood = self.selectedFoodItems[0] {
                 cvc.firstCompareFood = firstCompareFood
             }

@@ -95,12 +95,38 @@
                     <view key="view" contentMode="scaleToFill" id="ToH-bJ-1RZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mat 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x8Z-zh-ngZ">
+                                <rect key="frame" x="20" y="264" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mat 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z7z-me-w0Q">
+                                <rect key="frame" x="20" y="293" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.58039215686274503" green="0.066479161381721497" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="z7z-me-w0Q" firstAttribute="top" secondItem="x8Z-zh-ngZ" secondAttribute="bottom" constant="8" symbolic="YES" id="GP2-4l-qVt"/>
+                            <constraint firstItem="x8Z-zh-ngZ" firstAttribute="trailing" secondItem="z7z-me-w0Q" secondAttribute="trailing" id="Gq9-X2-IRI"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="z7z-me-w0Q" secondAttribute="leading" id="Kke-j5-jCQ"/>
+                            <constraint firstItem="x8Z-zh-ngZ" firstAttribute="top" secondItem="zI8-sM-5Uc" secondAttribute="bottom" constant="200" id="LFh-oY-1cP"/>
+                            <constraint firstItem="x8Z-zh-ngZ" firstAttribute="leading" secondItem="z7z-me-w0Q" secondAttribute="leading" id="Sbr-xI-cDl"/>
+                            <constraint firstItem="x8Z-zh-ngZ" firstAttribute="trailing" secondItem="ToH-bJ-1RZ" secondAttribute="trailingMargin" id="ksN-PB-jx2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="firstFoodLabel" destination="x8Z-zh-ngZ" id="pHO-AG-pcv"/>
+                        <outlet property="secondFoodLabel" destination="z7z-me-w0Q" id="jiE-7v-NRc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d94-s7-ecd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2654" y="-165"/>
+            <point key="canvasLocation" x="2653.6231884057975" y="-165.48913043478262"/>
         </scene>
         <!--Sökresultat-->
         <scene sceneID="lhJ-Lr-ROb">
@@ -116,13 +142,13 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4cI-lh-rBg" id="4bm-qI-wna">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Matvara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-1f-DUt">
                                             <rect key="frame" x="38.333333333333343" y="14" width="282.66666666666663" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.14117647058823529" green="0.56188452243804932" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74Z-dx-2r0" customClass="BEMCheckBox">
@@ -141,7 +167,7 @@
                                                 <constraint firstAttribute="width" constant="85" id="sP5-7u-L4Q"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.58039215686274503" green="0.066479161381721497" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -184,6 +210,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="compareButton" destination="yEx-Sr-kK6" id="t9K-lB-agB"/>
                         <outlet property="favoriteButton" destination="qTy-dW-1CV" id="GHB-lK-f0s"/>
                     </connections>
                 </tableViewController>

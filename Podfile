@@ -7,4 +7,5 @@ target 'LabbSwiftMatApp' do
 
   # Pods for LabbSwiftMatApp
   pod 'BEMCheckBox', '~> 1.4'
+  pod 'GraphKit', '~> 1.1'
 end
