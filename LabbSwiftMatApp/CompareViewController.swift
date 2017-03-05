@@ -10,10 +10,8 @@ import UIKit
 import GraphKit
 
 class CompareViewController: UIViewController, GKBarGraphDataSource {
-    @IBOutlet weak var graphView: UIView!
     
     @IBOutlet weak var firstFoodLabel: UILabel!
-    
     @IBOutlet weak var secondFoodLabel: UILabel!
     
     var firstCompareFood : Food!
@@ -24,9 +22,17 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstFoodLabel.text = firstCompareFood.name!
-        secondFoodLabel.text = secondCompareFood.name!
-        
+        if let firstName = firstCompareFood.name {
+             firstFoodLabel.text = firstName
+        } else {
+            firstFoodLabel.text = "-"
+        }
+        if let secondName = secondCompareFood.name {
+            secondFoodLabel.text = secondName
+        } else {
+            secondFoodLabel.text = ""
+        }
+       
         values = GKBarGraph(frame: CGRect(x: self.view.center.x, y: 0, width: 0, height: 240))
         self.view.addSubview(values)
         values.marginBar = 30
