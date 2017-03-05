@@ -41,8 +41,10 @@ class ResultTableViewCell : UITableViewCell {
         }
         
         if rtvc.selectedFoodItems.count == 2 {
+            rtvc.compareButton.title = "⚖"
             rtvc.compareButton.isEnabled = true
         } else {
+            rtvc.compareButton.title = "-"
             rtvc.compareButton.isEnabled = false
         }
         
