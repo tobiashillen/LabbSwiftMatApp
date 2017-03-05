@@ -53,7 +53,6 @@
 		8B7971B21E5B3AF600DD3713 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */,
 				8B1C4AB51E6842E700096C70 /* Food.swift */,
 			);
 			name = Model;
@@ -81,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				8B7971B21E5B3AF600DD3713 /* Model */,
+				8B7971B31E5B3D1000DD3713 /* ApiHelper.swift */,
 				8BDA5BF21E534F88003A75BA /* AppDelegate.swift */,
 				8BDA5BF61E534F88003A75BA /* Main.storyboard */,
 				8BDA5BF91E534F89003A75BA /* Assets.xcassets */,
