@@ -53,6 +53,30 @@
                                     <segue destination="tT6-us-rER" kind="show" id="LEJ-Qo-qIg"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-VU-4u1">
+                                <rect key="frame" x="155" y="-9" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="Ywp-dN-I44">
+                                <rect key="frame" x="216" y="-27" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="sct-m1-WFs">
+                                <rect key="frame" x="231" y="-47" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="DL1-Vk-7k7">
+                                <rect key="frame" x="108" y="-27" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="0A7-NL-Nqy">
+                                <rect key="frame" x="127" y="-17" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="RedApple" translatesAutoresizingMaskIntoConstraints="NO" id="iei-TN-Kjc">
+                                <rect key="frame" x="253" y="-39" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -68,8 +92,16 @@
                     </view>
                     <navigationItem key="navigationItem" id="LKN-nw-I0H"/>
                     <connections>
+                        <outlet property="apple1" destination="UyG-VU-4u1" id="i3U-Nv-zha"/>
+                        <outlet property="apple2" destination="DL1-Vk-7k7" id="bEh-oQ-LDw"/>
+                        <outlet property="apple3" destination="Ywp-dN-I44" id="0Bq-Pt-TBr"/>
+                        <outlet property="apple4" destination="sct-m1-WFs" id="Txb-IL-1G9"/>
+                        <outlet property="apple5" destination="0A7-NL-Nqy" id="Znq-kR-lsH"/>
+                        <outlet property="apple6" destination="iei-TN-Kjc" id="Ddr-1n-M71"/>
+                        <outlet property="searchButton" destination="gQF-Xb-cqE" id="wg3-da-xNM"/>
                         <outlet property="searchDisplayController" destination="wmE-j2-qnv" id="5tN-if-bcW"/>
                         <outlet property="searchField" destination="Mtb-MV-u4X" id="KkF-TG-7bH"/>
+                        <outlet property="titleLabel" destination="EFr-xx-cKZ" id="cfp-pc-Yet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,7 +114,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1085.5999999999999" y="214.54272863568218"/>
+            <point key="canvasLocation" x="1085.5072463768117" y="214.4021739130435"/>
         </scene>
         <!--Compare View Controller-->
         <scene sceneID="E7l-aL-gIl">
@@ -211,7 +243,7 @@
                                     <action selector="modeButton:" destination="tT6-us-rER" id="BwC-CK-gkm"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="⚖" id="yEx-Sr-kK6">
+                            <barButtonItem title="-" id="yEx-Sr-kK6">
                                 <connections>
                                     <segue destination="ddR-Sx-zfG" kind="show" identifier="compare" id="61u-Lp-zis"/>
                                 </connections>
@@ -382,6 +414,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="RedApple" width="400" height="400"/>
         <image name="dinner" width="1440" height="960"/>
     </resources>
 </document>
