@@ -13,6 +13,8 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
     
     @IBOutlet weak var firstFoodLabel: UILabel!
     @IBOutlet weak var secondFoodLabel: UILabel!
+    @IBOutlet weak var healthValueForFirst: UILabel!
+    @IBOutlet weak var healthValueForSecond: UILabel!
     
     var firstCompareFood : Food!
     var secondCompareFood : Food!
@@ -32,11 +34,13 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
         } else {
             firstFoodLabel.text = "-"
         }
+        healthValueForFirst.text = "Nyttighetsvärde: \(firstCompareFood.healthValue)"
         if let secondName = secondCompareFood.name {
             secondFoodLabel.text = secondName
         } else {
             secondFoodLabel.text = ""
         }
+        healthValueForSecond.text = "Nyttighetsvärde: \(secondCompareFood.healthValue)"
     }
     
     func setUpGraph() {
