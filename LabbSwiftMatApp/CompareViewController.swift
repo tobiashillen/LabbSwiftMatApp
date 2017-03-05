@@ -22,8 +22,13 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextLabels()
+        setUpGraph()
+    }
+    
+    func setTextLabels() {
         if let firstName = firstCompareFood.name {
-             firstFoodLabel.text = firstName
+            firstFoodLabel.text = firstName
         } else {
             firstFoodLabel.text = "-"
         }
@@ -32,13 +37,14 @@ class CompareViewController: UIViewController, GKBarGraphDataSource {
         } else {
             secondFoodLabel.text = ""
         }
-       
+    }
+    
+    func setUpGraph() {
         values = GKBarGraph(frame: CGRect(x: self.view.center.x, y: 0, width: 0, height: 240))
         self.view.addSubview(values)
         values.marginBar = 30
         values.dataSource = self
         values.draw()
-
     }
     
     public func numberOfBars() -> Int {

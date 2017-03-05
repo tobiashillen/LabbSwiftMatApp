@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var apple5: UIImageView!
     @IBOutlet weak var apple6: UIImageView!
     
+    var appleList: [UIImageView]!
     var dynamicAnimator: UIDynamicAnimator!
     var gravity: UIGravityBehavior!
     var collision: UICollisionBehavior!
@@ -27,8 +28,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        appleList = [apple1, apple2, apple3, apple4, apple5, apple6]
         animateTitle()
         animateDynamicApples()
+        fadeOutSmallApples()
     }
     
     func animateTitle() {
@@ -42,16 +45,17 @@ class ViewController: UIViewController {
     
     func animateDynamicApples() {
         dynamicAnimator = UIDynamicAnimator(referenceView: view)
-        gravity = UIGravityBehavior(items: [apple1, apple2, apple3, apple4, apple5, apple6])
-        collision = UICollisionBehavior(items: [apple1, apple2, apple3, apple4, apple5, apple6])
+        gravity = UIGravityBehavior(items: appleList)
+        collision = UICollisionBehavior(items: appleList)
         snap = UISnapBehavior(item: apple1, snapTo: view.center)
         snap.damping = 2
-        
         dynamicAnimator.addBehavior(snap)
         dynamicAnimator.addBehavior(gravity)
         dynamicAnimator.addBehavior(collision)
-        
-        //Fades small apples laying on top of the big apple if present.
+    }
+    
+    //Fades out small apples laying on top of the big apple if present.
+    func fadeOutSmallApples() {
         UIView.beginAnimations("Fade out small apples", context: nil)
         UIView.setAnimationDuration(1)
         UIView.setAnimationDelay(3)

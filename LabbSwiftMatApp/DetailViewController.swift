@@ -27,13 +27,11 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         color = (favoriteButton.titleLabel?.textColor)!
-        
         if let savedImage = UIImage(contentsOfFile: imagePath) {
             foodImage.image = savedImage
         } else {
             NSLog("No image to load from: \(imagePath)")
         }
-        
         checkFavoritesForCurrentFood()
         loadAllData()
     }
@@ -74,15 +72,14 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         } else {
             NSLog("DetailView: Failed to load title.")
         }
-        
         if let energy = food?.energyValue,
             let fat = food?.fat,
             let protein = food?.protein,
             let carbohydrates = food?.carbohydrates {
             energyLabel.text = "Energivärde: \(energy) kcal"
-            fatLabel.text = "Fett: \(fat)"
-            proteinLabel.text = "Protein: \(protein)"
-            carbohydratesLabel.text = "Kolhydrater: \(carbohydrates)"
+            fatLabel.text = "Fett: \(fat) %"
+            proteinLabel.text = "Protein: \(protein) %"
+            carbohydratesLabel.text = "Kolhydrater: \(carbohydrates) %"
             healthValueLabel.text = "Nyttighetsvärde: \(food!.healthValue)"
             NSLog("DetailView: Data set to views")
         } else {
@@ -99,7 +96,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             })
             NSLog("DetailView: Waiting for data from API.")
         }
-
     }
     
     @IBAction func saveOrDeleteFavorite(_ sender: UIButton) {
@@ -132,7 +128,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         }
     }
     
-    
     func saveToFavorites() {
         if var favList : [Int] = userDef.array(forKey: "favorites") as? [Int] {
             favList.append(food!.number)
@@ -159,10 +154,8 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBAction func takePhoto(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
-        
         imagePicker.delegate = self
         imagePicker.allowsEditing = true
-        
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             imagePicker.sourceType = .camera
         }
@@ -172,7 +165,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
         else {
             NSLog("No image source available.")
         }
-        
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -180,7 +172,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        
         if let imageData = UIImagePNGRepresentation(image) {
             do {
                 let url = URL(fileURLWithPath: imagePath)
@@ -191,7 +182,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
                 NSLog("Failed to save png image data: \(error)")
             }
         }
-        
         foodImage.image = image
         imagePicker.dismiss(animated: true, completion: nil)
     }
@@ -209,16 +199,4 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             fatalError("Could not load image path.")
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
