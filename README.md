@@ -1,4 +1,5 @@
 # Livsmedelsapp (Swift)
+av Tobias Hillén
 
 <b>Övergripande beskrivning</b><br>
 En app för personer som tränar, följer någon diet eller bara är allmänt intresserade av vilka näringsämnnen som finns i olika livsmedel.
